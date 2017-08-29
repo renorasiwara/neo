@@ -68,7 +68,7 @@ public class CrimeListFragment extends Fragment {
         public void onClick(View v) {
 //            Toast.makeText(getActivity(), mCrime.getTitle() + " clicked !", Toast.LENGTH_SHORT).show();
 
-//            Intent inten = new Intent(getActivity(),CrimeActivity.class);
+//            Intent intent = new Intent(getActivity(),CrimeActivity.class);
             Intent intent = CrimeActivity.newIntent(getActivity(),mCrime.getID());
             startActivity(intent);
 
@@ -80,6 +80,11 @@ public class CrimeListFragment extends Fragment {
 
         public CrimeAdapter(List<Crime> crimes) {
             mCrimes = crimes;
+        }
+
+        @Override
+        public int getItemCount() {
+            return mCrimes.size();
         }
 
         @Override
@@ -96,11 +101,6 @@ public class CrimeListFragment extends Fragment {
             Crime crime = mCrimes.get(position);
 //            holder.mTitleTextView.setText(crime.getTitle());
             holder.bindCrime(crime);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mCrimes.size();
         }
     }
 }
